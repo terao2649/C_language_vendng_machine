@@ -44,26 +44,25 @@ int main( void )
 	do{
 		 int no;
 
-		 printf("\n\n◆◆　操作メニュー　◆◆\n");
-		 printf("\n(1) 商品を購入する\n");
-		 printf("\n(2) 在庫を確認する\n");
-		 printf("\n(3) 終了\n");
-		 no = inputString("\n番号を入力してください。>");
+		 printf("\n\n◆◆　操作メニュー　◆◆\n");		//操作メニューの表示
+		 printf("\n(1) 商品を購入する\n");		//選択肢1の表示
+		 printf("\n(2) 在庫を確認する\n");		//選択肢2の表示
+		 printf("\n(3) 終了\n");				//選択肢3の表示
+		 no = inputString("\n番号を入力してください。>");//番号入力依頼の表示
 
 		 switch( no ){
-		 case 1:
-			inv_dispGoodsList();
-			buying();
+			case 1:
+				inv_dispGoodsList();
+				buying();
 			break;
-		 case 2:
-			inv_dispStockList();
-			inputEnter("\n表示を確認してください。[Enter]>");
+			case 2:
+				inv_dispStockList();
+				inputEnter("\n表示を確認してください。[Enter]>");
 			break;
-		 case 3:
+			case 3:
 			return 0;
 		 }
 	}while(1);
-
 }
 /*
  * 商品を購入する

@@ -1,11 +1,19 @@
+/*********************************************/
+/*                                           		　　　*/
+/*       プログラム名：自動販売機のプログラム            */
+/*                                           　　　　　　　　　　　*/
+/*       作成者：Win太郎                      	　　　　*/
+/*       作成日：2023/03/01                   	　　　　*/
+/*                                           	　　　　　　　　*/
+/*********************************************/
 #include <stdio.h>
 #include <string.h>
 
-#include "InventoryControl.h"
+#include "InventoryControl.h"		//商品登録
 
 
 static DRINK g_list[MAX_ENTRY];		// 飲み物リスト
-static int	 g_count = 0;			// 登録数
+static int	 g_count = 0;			// 登録数（このファイル内のみからアクセス可能）
 
 /*
  * 項目の位置を取得する

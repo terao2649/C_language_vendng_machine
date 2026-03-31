@@ -76,16 +76,21 @@ void inv_setInitStock( int amount ){
 }
 //　商品一覧表示
 void inv_dispGoodsList(  ){
+	
 	char temp[30];
 	int i;
 
    	printf("\n");
 	printf("◆◆ 商品表示 ◆◆\n");
+	
 	for (i = 0; i < g_count; i++) {
-    	printf("\n");
+    	
+		//商品の品名と金額を表示する
+		printf("\n");
     	printf("(%d) %s", i+1, g_list[i].name );
         printf(" \t%d円\n", g_list[i].price );
-        //特記事項 表示
+       
+		//特記事項 表示
         switch( g_list[i].type ){
         case COFFEE:
         	strcpy( temp, "豆原産地：");
@@ -99,11 +104,15 @@ void inv_dispGoodsList(  ){
         default:
         	;
         }
+
         strcat( temp, g_list[i].note );
 
         printf(" （ %s ）\n", temp );
+	
 	}
+	
 	printf("\n");
+
 }
 
 // 商品購入
@@ -112,31 +121,43 @@ int inv_buying(int money, int goodsNo ) {
 	int stock;
 	int price;
 
+	//在庫の数を取得する
 	stock = g_list[goodsNo-1].stock;
+	
+	//在庫があるかどうかの判定
 	if( stock <= 0 ){
 		printf("\n在庫がありません。\n");
 		return -1;
 	}
 
+	//商品の金額を取得する
 	price = g_list[goodsNo-1].price;
+	
+	//お金が足りているかの判定
 	if( money < price ){
 		printf("\nお金が不足しています。\n");
 		return -1;
 	}
+	
 	g_list[goodsNo-1].stock--;
 	printf( "\n【%s】を購入しました。", g_list[goodsNo-1].name);
+	
 	return money-price;
 }
 
 // 在庫表示
 void inv_dispStockList(  ){
+
 	int i;
-   	printf("\n");
+   	
+	//在庫のある商品を表示する
+	printf("\n");
 	printf("◆◆ 商品在庫 ◆◆\n");
 	for (i = 0; i < g_count; i++) {
     	printf("\n");
     	printf("(%d) %s ・・・・%d本\n", i+1, g_list[i].name, g_list[i].stock );
     }
-   	printf("\n");
+   	
+	printf("\n");
 }
 
